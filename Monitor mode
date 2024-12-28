@@ -1,0 +1,16 @@
+to enter into the monitor mode we use airmon-ng package. Monitor mode allows your device to passively listen to all wireless traffic in the air. It does not actively transmit or participate in communication like when it's in managed mode.
+In monitor mode, your device doesn't change or hide its MAC address unless you deliberately spoof it.
+STEPS TO ENTER MONITOR MODE - 
+
+ifconfig wlan0 down 
+airmon-ng check kill 
+iwconfig wlan0 mode monitor
+ifconfig wlan0 up 
+
+
+in ifconfig wlan0 down it will turn down the interface wlan0 which is the wireless adapter 
+it just disables the wireless network of wlan0 
+airmon-ng is a part of aircrack-ng package and the cmd airmon-ng check kill will kill all the processes which might stop the 
+interface into entering monitor mode 
+iwconfig wlan0 mode monitor will enter the wireless adapter into the monitor mode 
+ifconfig wlan0 up will enable back the wireless adapter
