@@ -2,10 +2,10 @@ to enter into the monitor mode we use airmon-ng package. Monitor mode allows you
 In monitor mode, your device doesn't change or hide its MAC address unless you deliberately spoof it.
 STEPS TO ENTER MONITOR MODE - 
 
-ifconfig wlan0 down 
-airmon-ng check kill 
-iwconfig wlan0 mode monitor
-ifconfig wlan0 up 
+>> ifconfig wlan0 down 
+>> airmon-ng check kill 
+>> iwconfig wlan0 mode monitor
+>> ifconfig wlan0 up 
 
 
 in ifconfig wlan0 down it will turn down the interface wlan0 which is the wireless adapter 
@@ -14,3 +14,20 @@ airmon-ng is a part of aircrack-ng package and the cmd airmon-ng check kill will
 interface into entering monitor mode 
 iwconfig wlan0 mode monitor will enter the wireless adapter into the monitor mode 
 ifconfig wlan0 up will enable back the wireless adapter
+the monitor mode is mostly used to passively listen to network traffic after we have turned on the monitor 
+mode we will use airodump-ng to capture all the wireless packets in our network. 
+Note- after we turn on the monitor mode our interface is called as mon0 instead of wlan0
+for wireless network adapter to listen to more that 5 gigahz - 
+
+>>airodump-ng --band a mon0 
+
+to capture both 2.5ghz and 5ghz frequencies we use this - 
+
+>>airodump-ng --band abg mon0 
+
+for targetted packet sniffing means to know more data about a single network then we use this command -
+
+>>airodump-ng --bssid F8:23:B2:B9:50:AB --channel 2 test mon0
+
+here test is the file in which all the packet sniffed data will be present and it will be a cap file.
+wireshark is the tool which is used to analyze the data present in network traffic
